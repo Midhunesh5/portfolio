@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIDHUNESH G - Data Scientist & AI Developer</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#7F00FF',
+secondary: '#E100FF'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+},
+fontFamily: {
+'poppins': ['Poppins', 'sans-serif']
+}
+}
+}
+}
+
+</script>
+<style>
+body {
+font-family: 'Poppins', sans-serif;
+background-color: #000000;
+color: #ffffff;
+}
+.animated-gradient {
+background: linear-gradient(45deg, #7F00FF, #E100FF, #7F00FF);
+background-size: 200% 200%;
+animation: gradientMove 15s ease infinite;
+}
+.floating-effect {
+animation: floating 3s ease-in-out infinite;
+}
+@keyframes gradientMove {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+@keyframes floating {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+.gradient-text {
+background: linear-gradient(135deg, #7F00FF, #E100FF);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+.gradient-bg {
+background: linear-gradient(135deg, #7F00FF, #E100FF);
+}
+.gradient-border {
+position: relative;
+background: #111111;
+border-radius: 16px;
+}
+.gradient-border::before {
+content: '';
+position: absolute;
+inset: 0;
+padding: 2px;
+background: linear-gradient(135deg, #7F00FF, #E100FF);
+border-radius: inherit;
+mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+mask-composite: xor;
+-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+-webkit-mask-composite: xor;
+}
+.glow-effect {
+box-shadow: 0 0 20px rgba(127, 0, 255, 0.3);
+}
+.card-hover {
+transition: all 0.3s ease;
+}
+.card-hover:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 30px rgb(161, 146, 181);
+}
+.timeline-line {
+background: linear-gradient(to bottom, #7F00FF, #E100FF);
+}
+.skill-tag {
+background: rgba(127, 0, 255, 0.1);
+border: 1px solid rgba(127, 0, 255, 0.3);
+transition: all 0.3s ease;
+}
+.skill-tag:hover {
+background: rgba(127, 0, 255, 0.2);
+box-shadow: 0 0 10px rgba(127, 0, 255, 0.5);
+}
+.form-input {
+background: #000000;
+border: 2px solid #393839;
+transition: all 0.3s ease;
+}
+.form-input:focus {
+border-color: #ffffff;
+box-shadow: 0 0 10px rgba(127, 0, 255, 0.3);
+outline: none;
+}
+.social-icon {
+transition: all 0.3s ease;
+}
+html, body {
+  overflow-x: hidden;
+}
+.mesh-gradient {
+background-color: #000000;
+opacity: 0.15;
+background-image: radial-gradient(#7F00FF 0.5px, transparent 0.5px), radial-gradient(#E100FF 0.5px, #000000 0.5px);
+background-size: 20px 20px;
+background-position: 0 0, 10px 10px;
+}
+.social-icon:hover {
+box-shadow: 0 0 15px rgba(127, 0, 255, 0.6);
+transform: scale(1.1);
+}
+</style>
+</head>
+<body class="bg-black text-white">
+<nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between items-center h-16">
+<div class="text-xl font-bold gradient-text">MIDHUNESH G</div>
+<div class="hidden md:flex space-x-8">
+<a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+<a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+<a href="#experience" class="text-gray-300 hover:text-white transition-colors">Experience</a>
+<a href="#projects" class="text-gray-300 hover:text-white transition-colors">Projects</a>
+<a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+</div>
+<button id="mobile-menu-button" class="md:hidden w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line text-xl"></i>
+</button>
+</div>
+</div>
+<div id="mobile-menu" class="hidden md:hidden bg-black/95 border-t border-gray-800">
+<div class="px-4 py-4 space-y-4">
+<a href="#home" class="block text-gray-300 hover:text-white transition-colors">Home</a>
+<a href="#about" class="block text-gray-300 hover:text-white transition-colors">About</a>
+<a href="#projects" class="block text-gray-300 hover:text-white transition-colors">Projects</a>
+<a href="#experience" class="block text-gray-300 hover:text-white transition-colors">Experience</a>
+<a href="#contact" class="block text-gray-300 hover:text-white transition-colors">Contact</a>
+</div>
+</div>
+</nav>
+<section id="home" class="min-h-screen flex items-center justify-center pt-16 overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=abstract%20dark%20space%20background%20with%20purple%20and%20violet%20gradient%20particles%20floating%20in%20cosmic%20void%2C%20futuristic%20digital%20atmosphere%2C%20minimal%20geometric%20patterns%2C%20professional%20tech%20background%2C%20high%20contrast%20lighting%2C%20modern%20sci-fi%20aesthetic%2C%20deep%20space%20nebula%20colors%2C%20highly%20detailed%20particle%20effects&width=1920&height=1080&seq=hero-bg-enhanced&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-black/90"></div>
+<div class="absolute inset-0 mesh-gradient"></div>
+<div class="absolute w-full h-full">
+<div class="absolute w-96 h-96 bg-primary/30 rounded-full filter blur-[100px] -top-12 -left-12 animate-pulse"></div>
+<div class="absolute w-96 h-96 bg-secondary/30 rounded-full filter blur-[100px] -bottom-12 -right-12 animate-pulse"></div>
+</div>
+<div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+<div class="w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden gradient-border glow-effect p-1 ">
+<img src="assets/RES Img.png" alt="Midhunesh Profile" class="w-full h-full object-cover">
+</div>
+<div class="inline-block p-2 px-6 rounded-full bg-purple-500/10 border border-purple-500/20 mb-8">
+<span class="text-purple-300">Welcome to my portfolio</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-bold mb-3 gradient-text">&nbsp;MIDHUNESH G&nbsp;</h1>
+<h2 class="text-lg md:text-xl font-semibold mb-2">&nbsp;Data Scientist & AI Developer&nbsp;</h2>
+<p class="text-base text-gray-300 mb-4">Turning data into intelligent solutions.</p>
+<div class="flex justify-center gap-6 mb-6">
+  <div class="text-center">
+    <span class="text-lg font-bold gradient-text">4+</span>
+    <p class="text-xs text-purple-300 mt-1">Internships</p>
+  </div>
+  <div class="text-center">
+    <span class="text-lg font-bold gradient-text">7+</span>
+    <p class="text-xs text-purple-300 mt-1">Projects</p>
+  </div>
+  <div class="text-center">
+    <span class="text-lg font-bold gradient-text">8+</span>
+    <p class="text-xs text-purple-300 mt-1">Certifications</p>
+  </div>
+</div>
+<div class="flex justify-center gap-3">
+  <a href="#contact" class="gradient-bg text-white px-4 py-2 rounded-lg font-semibold text-sm glow-effect hover:scale-105 transition-all !rounded-button whitespace-nowrap flex items-center">
+    <i class="ri-send-plane-line mr-1"></i> Let's Connect
+  </a>
+  <button id="open-resume-modal" class="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-lg font-semibold text-sm hover:bg-white/20 transition-all !rounded-button whitespace-nowrap flex items-center">
+    <i class="ri-file-text-line mr-1"></i> Download Resume
+  </button>
+</div>
+</div>
+</section>
+<section id="about" class="py-20 px-4 relative overflow-hidden">
+<div class="absolute w-full h-full">
+<div class="absolute w-96 h-96 bg-primary/20 rounded-full filter blur-[120px] -top-48 -right-48"></div>
+<div class="absolute w-96 h-96 bg-secondary/20 rounded-full filter blur-[120px] -bottom-48 -left-48"></div>
+</div>
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-16 gradient-text">About Me</h2>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="text-center md:text-left">
+<div class="w-64 h-64 mx-auto md:mx-0 rounded-full overflow-hidden gradient-border glow-effect ">
+<img src="assets/Abt.png" alt="Midhunesh Profile" class="w-full h-full object-cover">
+</div>
+</div>
+<div>
+<p class="text-lg text-gray-300 mb-6 leading-relaxed">
+I'm a passionate Data Scientist and AI Developer with expertise in machine learning, deep learning, and computer vision. I specialize in transforming complex data into actionable insights and building intelligent systems that solve real-world problems.
+</p>
+<p class="text-lg text-gray-300 mb-8 leading-relaxed">
+With a strong foundation in Python programming and cutting-edge AI technologies, I create innovative solutions that bridge the gap between data science theory and practical applications.
+</p>
+</div>
+</div>
+<div class="mt-16">
+<h3 class="text-2xl font-semibold gradient-text text-center mb-12">Technical Skills</h3>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="gradient-border p-6 card-hover">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mr-4">
+<i class="ri-code-line text-2xl"></i>
+</div>
+<h4 class="text-xl font-semibold text-purple-300">Programming</h4>
+</div>
+<div class="space-y-3">
+<div class="flex items-center">
+<span class="text-gray-300">Python</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[90%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">R</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">MySQL</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[80%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">Excel</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full gradient-bg"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="gradient-border p-6 card-hover">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mr-4">
+<i class="ri-bar-chart-line text-2xl"></i>
+</div>
+<h4 class="text-xl font-semibold text-purple-300">Visualization</h4>
+</div>
+<div class="space-y-3">
+<div class="flex items-center">
+<span class="text-gray-300">Power BI</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[95%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">Matplotlib</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">Seaborn</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[90%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">Plotly</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full gradient-bg"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="gradient-border p-6 card-hover">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mr-4">
+<i class="ri-brain-line text-2xl"></i>
+</div>
+<h4 class="text-xl font-semibold text-purple-300">Analytics</h4>
+</div>
+<div class="space-y-3">
+<div class="flex items-center">
+<span class="text-gray-300">EDA</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[90%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">ML/DL</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">CNN</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[80%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">Statistics</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[90%] h-full gradient-bg"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="gradient-border p-6 card-hover">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center mr-4">
+<i class="ri-window-line text-2xl"></i>
+</div>
+<h4 class="text-xl font-semibold text-purple-300">Web</h4>
+</div>
+<div class="space-y-3">
+<div class="flex items-center">
+<span class="text-gray-300">HTML</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[85%] h-full gradient-bg"></div>
+</div>
+</div>
+<div class="flex items-center">
+<span class="text-gray-300">CSS</span>
+<div class="ml-auto w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="w-[80%] h-full gradient-bg"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="experience" class="py-20 px-4 relative overflow-hidden">
+<div class="absolute w-full h-full">
+<div class="absolute w-96 h-96 bg-primary/20 rounded-full filter blur-[120px] -top-48 -left-48"></div>
+<div class="absolute w-96 h-96 bg-secondary/20 rounded-full filter blur-[120px] -bottom-48 -right-48"></div>
+</div>
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-16 gradient-text">Professional Experience</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+<!-- Experience Card 1 -->
+<a href="assets/pen-india-certificate.pdf" target="_blank" rel="noopener noreferrer" class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 card-hover flex flex-col h-full">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold gradient-text">Digital Campaign Analyst</h3>
+        <span class="text-purple-300 text-sm whitespace-nowrap">Mar 2024 – Apr 2024</span>
+    </div>
+    <div class="flex items-center mb-4">
+        <div class="w-8 h-8 rounded-lg bg-purple-900/30 flex items-center justify-center mr-3 flex-shrink-0">
+            <img src="assets/pen india.jpg" alt="Pen India" class="w-6 h-6 object-contain">
+        </div>
+        <p class="text-purple-300">Populus Empowerment Network</p>
+    </div>
+    <p class="text-gray-300 mb-4 flex-grow">Tracked and analyzed digital campaign performance using Excel-based reporting and collaborated with teams to enhance performance.</p>
+    <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">VBA</span>
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Microsoft Excel</span>
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Google Sheets</span>
+    </div>
+</a>
+
+<!-- Experience Card 2 -->
+<a href="assets/unified-mentor-certificate.pdf" target="_blank" rel="noopener noreferrer" class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 card-hover flex flex-col h-full">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold gradient-text">Data Science Intern</h3>
+        <span class="text-purple-300 text-sm whitespace-nowrap">Feb 2025 – Mar 2025</span>
+    </div>
+    <div class="flex items-center mb-4">
+        <div class="w-8 h-8 rounded-lg bg-purple-900/30 flex items-center justify-center mr-3 flex-shrink-0">
+            <img src="assets/un.jpg" alt="Unified Mentor" class="w-6 h-6 object-contain">
+        </div>
+        <p class="text-purple-300">Unified Mentor</p>
+    </div>
+    <p class="text-gray-300 mb-4 flex-grow">Developed a movie recommendation system and conducted EDA on Netflix data to uncover user behavior and content patterns.</p>
+    <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Python</span>
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Scikit-learn</span>
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Machine Learning</span>
+    </div>
+</a>
+
+<!-- Experience Card 3 -->
+<a href="assets/kavery-group-certificate.pdf" target="_blank" rel="noopener noreferrer" class="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 card-hover flex flex-col h-full">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-semibold gradient-text">Data Science Intern</h3>
+        <span class="text-purple-300 text-sm whitespace-nowrap">May 2025 – June 2025</span>
+    </div>
+    <div class="flex items-center mb-4">
+        <div class="w-8 h-8 rounded-lg bg-purple-900/30 flex items-center justify-center mr-3 flex-shrink-0">
+            <img src="assets/kavery_group_of_companies_logo.jpg" alt="Kavery Group" class="w-6 h-6 object-contain">
+        </div>
+        <p class="text-purple-300">Kavery Group of Companies</p>
+    </div>
+    <p class="text-gray-300 mb-4 flex-grow">Analyzed sales data to derive business insights, supported decision-making with reports, and performed sales forecasting using Prophet.</p>
+    <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Prophet</span>
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Sales Forecasting</span>
+        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-300">Data Analysis</span>
+    </div>
+</a>
+
+</div>
+</div>
+</section>
+<section id="projects" class="py-20 px-4 bg-gray-900/20 relative overflow-hidden">
+<div class="absolute w-full h-full">
+<div class="absolute w-96 h-96 bg-primary/20 rounded-full filter blur-[120px] -top-48 -right-48 animate-pulse"></div>
+<div class="absolute w-96 h-96 bg-secondary/20 rounded-full filter blur-[120px] -bottom-48 -left-48 animate-pulse"></div>
+<div class="mesh-gradient absolute inset-0"></div>
+</div>
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Project 1: Smart Sorting -->
+<div class="gradient-border card-hover p-4 relative group flex flex-col h-full">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+    <div class="relative flex flex-col flex-grow">
+        <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-3 flex-shrink-0">
+            <i class="ri-plant-line text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2 gradient-text">Smart Sorting</h3>
+        <p class="text-gray-300 text-xs mb-3 flex-grow">A deep learning model to classify fresh and rotten fruits, enhancing quality control in agriculture.</p>
+        <div class="flex flex-wrap gap-1 mb-4">
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">CNN</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">TensorFlow</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Computer Vision</span>
+        </div>
+        <a href="https://github.com/Midhunesh5/Smart_Sorting_Fruits" class="mt-auto w-full text-center gradient-bg text-white px-4 py-2 rounded-lg text-xs font-medium hover:scale-105 transition-all !rounded-button whitespace-nowrap">View on GitHub</a>
+    </div>
+</div>
+<!-- Project 2: Netflix Data Analysis -->
+<div class="gradient-border card-hover p-4 relative group flex flex-col h-full">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+    <div class="relative flex flex-col flex-grow">
+        <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-3 flex-shrink-0">
+            <i class="ri-bar-chart-box-line text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2 gradient-text">Netflix Data Analysis</h3>
+        <p class="text-gray-300 text-xs mb-3 flex-grow">An exploratory data analysis (EDA) of the Netflix dataset to uncover viewing patterns and content trends.</p>
+        <div class="flex flex-wrap gap-1 mb-4">
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Pandas</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Matplotlib</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Seaborn</span>
+        </div>
+        <a href="https://github.com/Midhunesh5/Netflix_Data_Analysis" class="mt-auto w-full text-center gradient-bg text-white px-4 py-2 rounded-lg text-xs font-medium hover:scale-105 transition-all !rounded-button whitespace-nowrap">View on GitHub</a>
+    </div>
+</div>
+<!-- Project 3: Automated Document Generator -->
+<div class="gradient-border card-hover p-4 relative group flex flex-col h-full">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+    <div class="relative flex flex-col flex-grow">
+        <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-3 flex-shrink-0">
+            <i class="ri-file-edit-line text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2 gradient-text">Automated Property Document Generator</h3>
+        <p class="text-gray-300 text-xs mb-3 flex-grow">A system that automates the creation of property documents, reducing manual effort and ensuring consistency.</p>
+        <div class="flex flex-wrap gap-1 mb-4">
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Python</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Docx</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Automation</span>
+        </div>
+        <a href="#" class="mt-auto w-full text-center gradient-bg text-white px-4 py-2 rounded-lg text-xs font-medium hover:scale-105 transition-all !rounded-button whitespace-nowrap">View on GitHub</a>
+    </div>
+</div>
+<!-- Project 4: Movie Recommender System -->
+<div class="gradient-border card-hover p-4 relative group flex flex-col h-full">
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+    <div class="relative flex flex-col flex-grow">
+        <div class="w-12 h-12 gradient-bg rounded-lg flex items-center justify-center mb-3 flex-shrink-0">
+            <i class="ri-film-line text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold mb-2 gradient-text">Movie Recommender System</h3>
+        <p class="text-gray-300 text-xs mb-3 flex-grow">A content-based filtering system that recommends movies to users based on their preferences and movie attributes.</p>
+        <div class="flex flex-wrap gap-1 mb-4">
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Scikit-learn</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">Pandas</span>
+            <span class="text-xs bg-purple-900/50 text-purple-300 px-2 py-1 rounded-full">NLP</span>
+        </div>
+        <a href="https://github.com/Midhunesh5/Movie-Recommender-System" class="mt-auto w-full text-center gradient-bg text-white px-4 py-2 rounded-lg text-xs font-medium hover:scale-105 transition-all !rounded-button whitespace-nowrap">View on GitHub</a>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<section id="certifications" class="py-20 px-4 bg-gray-900/20 relative overflow-hidden">
+<div class="absolute w-full h-full">
+<div class="absolute w-96 h-96 bg-primary/20 rounded-full filter blur-[120px] -top-48 -left-48 animate-pulse"></div>
+<div class="absolute w-96 h-96 bg-secondary/20 rounded-full filter blur-[120px] -bottom-48 -right-48 animate-pulse"></div>
+<div class="mesh-gradient absolute inset-0"></div>
+</div>
+<div class="max-w-6xl mx-auto">
+<h2 class="text-4xl font-bold text-center mb-16 gradient-text">Certifications</h2>
+<div class="grid md:grid-cols-3 gap-4">
+    <a href="assets/NUS Certification.pdf" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-200 rounded-lg p-4 card-hover backdrop-blur-sm relative group h-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+        <div class="relative flex flex-col h-full">
+            <div class="flex-grow">
+                <div class="flex items-start gap-3 mb-2">
+                    <i class="ri-building-line text-xl text-primary mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <p class="text-gray-900 font-semibold text-sm leading-tight">National University of Singapore</p>
+                        <p class="text-primary text-sm">AI Powered Business Analytics</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+                <i class="ri-calendar-line text-sm text-primary"></i>
+                <span class="text-gray-600 text-sm">September 6, 2024</span>
+                <i class="ri-external-link-line text-primary ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </div>
+        </div>
+    </a>
+    <a href="assets/Object Oriented Programminf using Python.pdf" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-200 rounded-lg p-4 card-hover backdrop-blur-sm relative group h-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+        <div class="relative flex flex-col h-full">
+            <div class="flex-grow">
+                <div class="flex items-start gap-3 mb-2">
+                    <i class="ri-building-line text-xl text-primary mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <p class="text-gray-900 font-semibold text-sm leading-tight">Infosys Springboard</p>
+                        <p class="text-primary text-sm">Object Oriented Programming using Python</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+                <i class="ri-calendar-line text-sm text-primary"></i>
+                <span class="text-gray-600 text-sm">August 29, 2024</span>
+                <i class="ri-external-link-line text-primary ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </div>
+        </div>
+    </a>
+    <a href="assets/TNSDC- FEWD & Cloud.pdf" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-200 rounded-lg p-4 card-hover backdrop-blur-sm relative group h-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+        <div class="relative flex flex-col h-full">
+            <div class="flex-grow">
+                <div class="flex items-start gap-3 mb-2">
+                    <i class="ri-building-line text-xl text-primary mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <p class="text-gray-900 font-semibold text-sm leading-tight">TNSDC – SkillsBuild</p>
+                        <p class="text-primary text-sm">TNSDC – FEWD & Cloud</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+                <i class="ri-calendar-line text-sm text-primary"></i>
+                <span class="text-gray-600 text-sm">March 25, 2025</span>
+                <i class="ri-external-link-line text-primary ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </div>
+        </div>
+    </a>
+    <a href="assets/web Development.jpg" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-200 rounded-lg p-4 card-hover backdrop-blur-sm relative group h-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+        <div class="relative flex flex-col h-full">
+            <div class="flex-grow">
+                <div class="flex items-start gap-3 mb-2">
+                    <i class="ri-building-line text-xl text-primary mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <p class="text-gray-900 font-semibold text-sm leading-tight">IBM SkillsBuild</p>
+                        <p class="text-primary text-sm">Web Development Basics</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+                <i class="ri-calendar-line text-sm text-primary"></i>
+                <span class="text-gray-600 text-sm">February 26, 2025</span>
+                <i class="ri-external-link-line text-primary ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </div>
+        </div>
+    </a>
+    <a href="assets/Midhunesh -Chatbot.pdf" target="_blank" rel="noopener noreferrer" class="block bg-white border border-gray-200 rounded-lg p-4 card-hover backdrop-blur-sm relative group h-full">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+        <div class="relative flex flex-col h-full">
+            <div class="flex-grow">
+                <div class="flex items-start gap-3 mb-2">
+                    <i class="ri-building-line text-xl text-primary mt-1 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <p class="text-gray-900 font-semibold text-sm leading-tight">IBM SkillsBuild</p>
+                        <p class="text-primary text-sm">Build Your First Chatbot</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+                <i class="ri-calendar-line text-sm text-primary"></i>
+                <span class="text-gray-600 text-sm">July 10, 2025</span>
+                <i class="ri-external-link-line text-primary ml-auto opacity-0 group-hover:opacity-100 transition-opacity"></i>
+            </div>
+        </div>
+    </a>
+</div>
+</div>
+</section>
+<section id="contact" class="py-20 px-4 bg-gray-900/20 relative overflow-hidden">
+<div class="absolute w-full h-full">
+<div class="absolute w-96 h-96 bg-primary/20 rounded-full filter blur-[120px] -top-48 -left-48"></div>
+<div class="absolute w-96 h-96 bg-secondary/20 rounded-full filter blur-[120px] -bottom-48 -right-48"></div>
+</div>
+<div class="max-w-4xl mx-auto relative z-10">
+<h2 class="text-4xl font-bold text-center mb-16 gradient-text">Get In Touch</h2>
+<div class="grid md:grid-cols-2 gap-12">
+<div>
+<h3 class="text-2xl font-semibold mb-6 gradient-text">Let's Connect</h3>
+<p class="text-gray-300 mb-8 leading-relaxed">
+I'm always interested in discussing new opportunities, innovative projects, and collaborations in the field of data science and AI. Feel free to reach out!
+</p>
+<div class="flex space-x-6">
+<a href="https://www.linkedin.com/in/midhunesh-g/" target="_blank" rel="noopener noreferrer" class="social-icon w-12 h-12 flex items-center justify-center gradient-bg rounded-full">
+<i class="ri-linkedin-fill text-xl"></i>
+</a>
+<a href="https://github.com/Midhunesh5/" target="_blank" rel="noopener noreferrer" class="social-icon w-12 h-12 flex items-center justify-center gradient-bg rounded-full">
+<i class="ri-github-fill text-xl"></i>
+</a>
+<a href="mailto:gunamidhunesh0987@gmail.com" target="_blank" rel="noopener noreferrer" class="social-icon w-12 h-12 flex items-center justify-center gradient-bg rounded-full">
+<i class="ri-mail-fill text-xl"></i>
+</a>
+</div>
+</div>
+<div class="relative">
+    <form id="contact-form" class="space-y-6">
+        <div>
+            <input type="text" name="name" placeholder="Your Name" class="form-input w-full px-4 py-3 rounded-lg text-white" required>
+        </div>
+        <div>
+            <input type="email" name="email" placeholder="Your Email" class="form-input w-full px-4 py-3 rounded-lg text-white" required>
+        </div>
+        <div>
+            <textarea name="message" placeholder="Your Message" rows="5" class="form-input w-full px-4 py-3 rounded-lg text-white resize-none" required></textarea>
+        </div>
+        <button type="submit" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold w-full glow-effect hover:scale-105 transition-all !rounded-button whitespace-nowrap">
+            Send Message
+        </button>
+    </form>
+    <p id="contact-form-message" class="text-sm mt-4 text-center font-medium absolute bottom-[-30px] w-full"></p>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-8 px-4 border-t border-gray-800">
+<div class="max-w-6xl mx-auto text-center">
+<p class="text-gray-400">&copy; 2025 Midhunesh. All rights reserved.</p>
+</div>
+</footer>
+<script id="mobile-menu-script">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+<script id="smooth-scroll-script">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+const offsetTop = targetElement.offsetTop - 80;
+window.scrollTo({
+top: offsetTop,
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+<script id="form-submission-script">
+document.addEventListener('DOMContentLoaded', function () {
+    const contactForm = document.getElementById('contact-form');
+    const contactMessage = document.getElementById('contact-form-message');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+
+            if (contactMessage) contactMessage.textContent = '';
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+
+            const formData = new FormData(this);
+
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    contactMessage.textContent = result.message || 'Message sent successfully!';
+                    contactMessage.className = 'text-sm mt-4 text-center font-medium text-green-400';
+                    this.reset();
+                } else {
+                    contactMessage.textContent = `Error: ${result.detail || 'Failed to send message.'}`;
+                    contactMessage.className = 'text-sm mt-4 text-center font-medium text-red-400';
+                }
+            } catch (error) {
+                console.error('Error submitting contact form:', error);
+                contactMessage.textContent = 'An unexpected error occurred. Please try again.';
+                contactMessage.className = 'text-sm mt-4 text-center font-medium text-red-400';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        });
+    }
+});
+</script>
+
+<!-- Resume Request Modal -->
+<div id="resume-modal" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center hidden">
+    <div class="bg-white p-8 rounded-2xl w-full max-w-md relative m-4">
+        <button id="close-modal-button" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors">
+            <i class="ri-close-line text-2xl"></i>
+        </button>
+        <h3 class="text-2xl font-bold mb-4 gradient-text">Download Resume</h3>
+        <p class="text-gray-600 mb-6">Please enter your details below. The resume will be sent to your email address.</p>
+        <form id="resume-request-form" class="space-y-6">
+            <div>
+                <input type="text" name="name" placeholder="Your Name" class="w-full px-4 py-3 rounded-lg bg-gray-100 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+            </div>
+            <div>
+                <input type="email" name="email" placeholder="Your Email" class="w-full px-4 py-3 rounded-lg bg-gray-100 border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" required>
+            </div>
+            <button type="submit" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold w-full glow-effect hover:scale-105 transition-all !rounded-button whitespace-nowrap">
+                Send Resume
+            </button>
+        </form>
+        <p id="modal-message" class="text-sm mt-4 text-center font-medium"></p>
+    </div>
+</div>
+
+<script id="resume-modal-script">
+document.addEventListener('DOMContentLoaded', function() {
+    const resumeModal = document.getElementById('resume-modal');
+    const openModalButton = document.getElementById('open-resume-modal');
+    const closeModalButton = document.getElementById('close-modal-button');
+    const resumeForm = document.getElementById('resume-request-form');
+    const modalMessage = document.getElementById('modal-message');
+
+    if (openModalButton && resumeModal) {
+        openModalButton.addEventListener('click', () => resumeModal.classList.remove('hidden'));
+    }
+
+    const closeModal = () => {
+        resumeModal.classList.add('hidden');
+        if (modalMessage) modalMessage.textContent = ''; // Clear message on close
+    };
+
+    if (closeModalButton) closeModalButton.addEventListener('click', closeModal);
+    if (resumeModal) resumeModal.addEventListener('click', (e) => { if (e.target === resumeModal) closeModal(); });
+
+    if (resumeForm) {
+        resumeForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const nameInput = this.querySelector('input[name="name"]');
+            const emailInput = this.querySelector('input[name="email"]');
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            if (modalMessage) modalMessage.textContent = '';
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Sending...';
+
+            const formData = new FormData();
+            formData.append('name', nameInput.value);
+            formData.append('email', emailInput.value);
+
+            try {
+                // Replace with your deployed backend URL if different
+                const response = await fetch('/send-resume', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    modalMessage.textContent = result.message || 'Resume sent! Check your inbox.';
+                    modalMessage.className = 'text-sm mt-4 text-center font-medium text-green-600';
+                    this.reset();
+                    setTimeout(closeModal, 3000); // Close modal after 3 seconds
+                } else {
+                    modalMessage.textContent = `Error: ${result.detail || 'Failed to send resume.'}`;
+                    modalMessage.className = 'text-sm mt-4 text-center font-medium text-red-600';
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                modalMessage.textContent = 'An unexpected error occurred. Please try again.';
+                modalMessage.className = 'text-sm mt-4 text-center font-medium text-red-600';
+            } finally {
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>
