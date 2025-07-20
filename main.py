@@ -3,14 +3,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pymongo import MongoClient
-from pydantic import EmailStr, BaseModel
+from pydantic import EmailStr
 from pydantic_settings import BaseSettings
 from email.message import EmailMessage
 import smtplib
 import datetime
 import logging
 from functools import lru_cache
+from contextlib import asynccontextmanager
 
+from fastapi import Depends
 # --- Basic Logging Setup ---
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -27,7 +29,23 @@ class Settings(BaseSettings):
 def get_settings():
     return Settings()
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # On startup, connect to the database
+    settings = get_settings()
+    app.state.mongo_client = MongoClient(settings.MONGO_URI, serverSelectionTimeoutMS=5000)
+    app.state.db = app.state.mongo_client["portfolio"]
+    try:
+        app.state.mongo_client.admin.command('ping')
+        logging.info("Successfully connected to MongoDB.")
+    except Exception as e:
+        logging.error(f"Failed to connect to MongoDB: {e}")
+    yield
+    # On shutdown, close the connection
+    app.state.mongo_client.close()
+    logging.info("MongoDB connection closed.")
+
+app = FastAPI(lifespan=lifespan)
 
 # Mount the 'assets' directory to serve static files like images and PDFs
 app.mount("/assets", StaticFiles(directory="assets"), name="assets")
@@ -41,18 +59,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- MongoDB Connection ---
-try:
-    client = MongoClient(get_settings().MONGO_URI, serverSelectionTimeoutMS=5000)
-    db = client["portfolio"]
-    collection = db["resume_requests"]
-    contact_collection = db["contact_messages"]
-    # The ping command is cheap and does not require auth.
-    client.admin.command('ping')
-    logging.info("Successfully connected to MongoDB.")
-except Exception as e:
-    logging.error(f"Failed to connect to MongoDB: {e}")
-    client = None # Ensure client is None if connection fails
+# --- Dependency to get DB ---
+def get_db():
+    if not hasattr(app.state, 'db'):
+        raise HTTPException(status_code=503, detail="Database connection is not available.")
+    return app.state.db
 
 # --- Helper Functions ---
 def send_email(subject: str, recipient: str, body: str, attachment_path: str = None, attachment_filename: str = None):
@@ -78,13 +89,11 @@ def send_email(subject: str, recipient: str, body: str, attachment_path: str = N
         smtp.send_message(msg)
 
 @app.post("/send-resume")
-async def send_resume(name: str = Form(...), email: EmailStr = Form(...)):
-    if client is None:
-        raise HTTPException(status_code=503, detail="Database connection is not available.")
-    
+async def send_resume(name: str = Form(...), email: EmailStr = Form(...), db: MongoClient = Depends(get_db)):
     try:
         # Store user in database
-        collection.insert_one({
+        resume_collection = db["resume_requests"]
+        resume_collection.insert_one({
             "name": name,
             "email": email,
             "timestamp": datetime.datetime.now()
@@ -115,12 +124,10 @@ async def send_resume(name: str = Form(...), email: EmailStr = Form(...)):
         raise HTTPException(status_code=500, detail="An unexpected server error occurred.")
 
 @app.post("/contact")
-async def handle_contact_form(name: str = Form(...), email: EmailStr = Form(...), message: str = Form(...)):
-    if client is None:
-        raise HTTPException(status_code=503, detail="Database connection is not available.")
-
+async def handle_contact_form(name: str = Form(...), email: EmailStr = Form(...), message: str = Form(...), db: MongoClient = Depends(get_db)):
     try:
         # Store the message in a separate collection
+        contact_collection = db["contact_messages"]
         contact_collection.insert_one({
             "name": name,
             "email": email,
