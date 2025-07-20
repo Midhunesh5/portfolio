@@ -6,6 +6,4 @@ pydantic
 email-validator
 pydantic-settings
 gunicorn
-
-
-
+python-multipart
